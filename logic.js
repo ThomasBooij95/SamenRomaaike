@@ -4,7 +4,7 @@ console.log("Script runt")
 // Get info about tasks from csv
 $.ajax({
 type: "GET",  
-url: "data/testfile.csv",
+url: "data/testfile2.csv",
 dataType: "text",       
 success: function(response)  
 {

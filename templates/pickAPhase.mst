@@ -8,8 +8,7 @@
       <dir class = "col">       
         {{#data}}
         <button class= "btn btn-secondary btn-block btn-CTA btn-phase " data-id = "{{id}}"> 
-                <p> Opdrachtnummer: {{id}} <br>
-                Beschrijving: {{opdrachtbeschrijving}}</p>
+                <h3>{{categorie}}</h3>
         </button>
         {{/data}}
 
