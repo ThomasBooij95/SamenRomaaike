@@ -28,25 +28,31 @@ function render_template(template,page,clickedId){
 	var context = {
 		data : elements
 	}
-    document.getElementById('content').innerHTML = Mustache.render(template, context);;
+    document.getElementById('content').innerHTML = Mustache.render(template, context);
 	addEventListener(document.getElementsByClassName('btn-phase'),'phase')
 	}
 	else if(page == 'task'){
-		console.log('clicked btn',clickedId)
 		filtered = data.find(function(e){return e.id == clickedId});
 		CHOSEN_TASKS.push(clickedId);
-		console.log(CHOSEN_TASKS)
-		// localStorage.setItem('current_phase', 'school' )//JSON.stringify(entry_dict));
-		console.log(filtered)
 		context = { 
 			data : filtered
 			 }
-		document.getElementById('content').innerHTML = Mustache.render(template, context);
-
+	document.getElementById('content').innerHTML = Mustache.render(template, context);
+	addEventListener(document.getElementById('finish-task'),'task')
 	}
 	else if (page == 'home'){
 	} 
 	else if(page == 'score'){
+	console.log("score-page, data = ",data)
+	console.log("clickedid = " ,clickedId)
+	filtered = data.find(function(e){return e.id == clickedId});
+	console.log(filtered)
+	var context = {
+		data : filtered
+	}
+	console.log("context = ",context)
+    document.getElementById('content').innerHTML = Mustache.render(template, context);
+	addEventListener(document.getElementById('finish-score'),'score')
 	}
 }
 
@@ -63,7 +69,9 @@ function addEventListener(element,page){
 		}
 	}
 	else if(page == 'task'){
-
+		element.addEventListener('click',function (event) {
+		fetch('templates/score.mst').then(response => response.text()).then(template => render_template(template,'score',this.dataset.id));	
+		});
 	}
 	else if (page == 'home'){
 		element.addEventListener('click',function (event) {
@@ -71,6 +79,9 @@ function addEventListener(element,page){
 		});
 	} 
 	else if(page == 'score'){
+		element.addEventListener('click',function (event) {
+		fetch('templates/pickAPhase.mst').then(response => response.text()).then(template => render_template(template,'phase'));	
+		});	
 	}
 }
 

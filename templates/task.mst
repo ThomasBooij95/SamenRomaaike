@@ -25,7 +25,7 @@
   
   <div class="row pt-5">
       <div class = "col-12">
-        <button class= "btn btn-secondary btn-block btn-CTA btn-phase " data-id = "{{id}}"> 
+        <button class= "btn btn-secondary btn-block btn-CTA " data-id = "{{data.id}}" id="finish-task"> 
                 <p> Taak afgerond</p>
           </button>
       </div>
