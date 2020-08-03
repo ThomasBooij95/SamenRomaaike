@@ -24,14 +24,21 @@ function render_template(template,page,clickedId){
 	// console.log(template)
 
 	if(page == 'phase'){
-	var elements = getRandom(data,3)
+	console.log("chosen tasks",CHOSEN_TASKS)
+	remainingTasks = getRemainingTasks(data,CHOSEN_TASKS)
+	console.log("remaining tasks:", remainingTasks)
+	var elements = getRandom(remainingTasks,3)
+	context = {}
 	var context = {
 		data : elements
 	}
+	console.log("context",context)
+	// debugger;
     document.getElementById('content').innerHTML = Mustache.render(template, context);
 	addEventListener(document.getElementsByClassName('btn-phase'),'phase')
 	}
 	else if(page == 'task'){
+
 		filtered = data.find(function(e){return e.id == clickedId});
 		CHOSEN_TASKS.push(clickedId);
 		context = { 
@@ -89,12 +96,21 @@ function getRandom(arr, n) {
     var result = new Array(n),
         len = arr.length,
         taken = new Array(len);
-    if (n > len)
-        throw new RangeError("getRandom: more elements taken than available");
+    // If more elements are asked than are present in the array, return entire array
+    if (n > len){
+        return arr
+    }
     while (n--) {
         var x = Math.floor(Math.random() * len);
         result[n] = arr[x in taken ? taken[x] : x];
         taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
+}
+
+function getRemainingTasks(data,CHOSEN_TASKS){
+	// Checks the id's in 'data' and removes the elements that are in Chosen Tasks.
+	return data = $.grep(data, function(e){ 
+     return !CHOSEN_TASKS.includes(e.id) 
+	});
 }
