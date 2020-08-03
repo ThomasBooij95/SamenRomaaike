@@ -1,3 +1,5 @@
+// "use strict";
+
 console.log("Script runt")
 // Get info about tasks from csv
 $.ajax({
@@ -10,6 +12,7 @@ data = $.csv.toObjects(response);
 console.log(data)
 }   
 });
+CHOSEN_TASKS = [];
 
 
 addEventListener(document.getElementById('newGame'),'home');
@@ -17,7 +20,7 @@ addEventListener(document.getElementById('newGame'),'home');
 
 // localStorage.setItem('current_phase', 'school' )//JSON.stringify(entry_dict));
 
-function render_template(template,page){
+function render_template(template,page,clickedId){
 	// console.log(template)
 
 	if(page == 'phase'){
@@ -26,21 +29,38 @@ function render_template(template,page){
 		data : elements
 	}
     document.getElementById('content').innerHTML = Mustache.render(template, context);;
+	addEventListener(document.getElementsByClassName('btn-phase'),'phase')
 	}
 	else if(page == 'task'){
+		console.log('clicked btn',clickedId)
+		filtered = data.find(function(e){return e.id == clickedId});
+		CHOSEN_TASKS.push(clickedId);
+		console.log(CHOSEN_TASKS)
+		// localStorage.setItem('current_phase', 'school' )//JSON.stringify(entry_dict));
+		console.log(filtered)
+		context = { 
+			data : filtered
+			 }
+		document.getElementById('content').innerHTML = Mustache.render(template, context);
 
 	}
 	else if (page == 'home'){
-
 	} 
 	else if(page == 'score'){
-
-}
+	}
 }
 
 function addEventListener(element,page){
+	console.log("reach add eventlistener")
 	if(page == 'phase'){
-	
+		console.log("Reach phase")
+		// debugger;
+		for(i = 0;i < element.length; i++){
+			console.log(element[i].dataset.id)
+			element[i].addEventListener('click',function (event) {
+			fetch('templates/task.mst').then(response => response.text()).then(template => render_template(template,'task',this.dataset.id)); //,	
+			});
+		}
 	}
 	else if(page == 'task'){
 
