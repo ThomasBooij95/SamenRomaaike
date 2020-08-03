@@ -1,0 +1,27 @@
+  <div class="container">
+    <dir class="row">
+      <dir class = "col">
+        
+
+        <h1>Kies een categorie!</h1>
+        <!-- <button class= "btn btn-secondary btn-block btn-CTA btn-checkout" > 
+                It works!: {{id}}{{text}}
+        </button>
+        <button class= "btn btn-secondary btn-block btn-CTA btn-checkout" > 
+                It works!: {{id}}{{text}}
+        </button>
+        <button class= "btn btn-secondary btn-block btn-CTA btn-checkout" > 
+                It works!: {{id}}{{text}}
+        </button> -->
+        {{#data}}
+        <button class= "btn btn-secondary btn-block btn-CTA btn-checkout" > 
+                <p> Opdrachtnummer: {{id}} <br>
+                Beschrijving: {{opdrachtbeschrijving}}</p>
+        </button>
+        {{/data}}
+
+      </dir>
+    </dir>
+  </div>
+
+
