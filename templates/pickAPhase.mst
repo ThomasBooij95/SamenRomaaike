@@ -1,9 +1,11 @@
   <div class="container">
-    <dir class="row">
-      <dir class = "col">
-        
-
+    <div class="row">
+      <div class = "col">
         <h1>Kies een categorie!</h1>
+      </div>
+    </div>
+    <dir class="row">
+      <dir class = "col">       
         {{#data}}
         <button class= "btn btn-secondary btn-block btn-CTA btn-phase " data-id = "{{id}}"> 
                 <p> Opdrachtnummer: {{id}} <br>
