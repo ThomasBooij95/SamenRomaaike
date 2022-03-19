@@ -33,20 +33,23 @@ function modules() {
   // Bootstrap
   var bootstrap = gulp.src('./node_modules/bootstrap/dist/**/*')
     .pipe(gulp.dest('./vendor/bootstrap'));
+  // jQuery-csv
+  var jquerycsv = gulp.src('./node_modules/jquery-csv/**/*')
+    .pipe(gulp.dest('./vendor/jquery-csv'));
   // jQuery
   var jquery = gulp.src([
-      './node_modules/jquery/dist/*',
-      '!./node_modules/jquery/dist/core.js'
-    ])
+    './node_modules/jquery/dist/*',
+    '!./node_modules/jquery/dist/core.js'
+  ])
     .pipe(gulp.dest('./vendor/jquery'));
-  return merge(bootstrap, jquery);
+  return merge(bootstrap, jquery, jquerycsv);
 }
 
 // Watch files
 function watchFiles() {
   gulp.watch("./**/*.css", browserSyncReload);
   gulp.watch("./**/*.html", browserSyncReload);
-  
+
 }
 
 // Define complex tasks
