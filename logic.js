@@ -27,7 +27,8 @@ function render_template(template, page, clickedId) {
 		ResetTaskscheck(data)
 		remainingTasks = getRemainingTasks(data, CHOSEN_TASKS)
 		// console.log("remaining tasks:", remainingTasks)
-		var elements = remainingTasks//getRandom(remainingTasks, 3)
+		// var elements = remainingTasks
+		var elements = getRandom(remainingTasks, 3)
 		context = {}
 		var context = {
 			data: elements
@@ -78,7 +79,7 @@ function addEventListener(element, page) {
 	}
 	else if (page == 'task') {
 		element.addEventListener('click', function (event) {
-			fetch('templates/score.mst').then(response => response.text()).then(template => render_template(template, 'score', this.dataset.id));
+			fetch('templates/pickAPhase.mst').then(response => response.text()).then(template => render_template(template, 'phase', this.dataset.id));
 		});
 	}
 	else if (page == 'home') {
