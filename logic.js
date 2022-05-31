@@ -23,9 +23,10 @@ function render_template(template, page, clickedId) {
 	// console.log(template)
 
 	if (page == 'phase') {
-		console.log("chosen tasks", CHOSEN_TASKS)
+		// console.log("chosen tasks", CHOSEN_TASKS)
+		ResetTaskscheck(data)
 		remainingTasks = getRemainingTasks(data, CHOSEN_TASKS)
-		console.log("remaining tasks:", remainingTasks)
+		// console.log("remaining tasks:", remainingTasks)
 		var elements = remainingTasks//getRandom(remainingTasks, 3)
 		context = {}
 		var context = {
@@ -113,4 +114,11 @@ function getRemainingTasks(data, CHOSEN_TASKS) {
 	return data = $.grep(data, function (e) {
 		return !CHOSEN_TASKS.includes(e.id)
 	});
+}
+function ResetTaskscheck(data) {
+	console.log("Checking tasks!AAAAAAAAAAAAAAAAAA")
+	console.log(data)
+	if (data.length - CHOSEN_TASKS.length < 3) {
+		CHOSEN_TASKS = []
+	}
 }
