@@ -1,20 +1,22 @@
   <div class="container">
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5">
       <div style = "text-align: center;" class = "col">
         <h1>Kies een thema!</h1>
       </div>
     </div>
-    <dir class="row">
-      <dir class = "col">       
+    <div class="row">
+      <div class = "col-md-7 col-12 mx-auto">       
         {{#data}}
-        <button class= "btn btn-secondary btn-block btn-CTA btn-phase " data-id = "{{id}}"> 
-                <h3>{{Thema}}</h3>
+        <button class= "btn  btn-block btn-CTA btn-phase button wood mb-4" style="display: flex; justify-content:center;align-items: center"data-id = "{{id}}"> 
+                <div class="m-0">
+                <h3>{{Thema}}</h3> <br>
                 <p>{{Titel}}</p>
+                </div>
         </button>
         {{/data}}
 
-      </dir>
-    </dir>
+      </div>
+    </div>
   </div>
 
 

@@ -12,7 +12,7 @@
         </div>  
       </div>
       <div class="col-md-4 col-12">
-        <button class=" mb-2 btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button class=" mb-2 mt-2 btn button wood" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Opdrachtbeschrijving
         </button>
         <div class="collapse" id="collapseExample">
@@ -25,9 +25,9 @@
   </div>
   
   <div class="row pt-5">
-      <div class = "col-12">
-        <button class= "btn btn-secondary btn-block btn-CTA " data-id = "{{data.id}}" id="finish-task"> 
-                <p> Taak afgerond</p>
+      <div class = " col-lg-4 col-12 mx-auto">
+        <button class= "btn btn-block btn-CTA button wood"   data-id = "{{data.id}}" id="finish-task"> 
+                <p style="display: flex; justify-content:center;align-items: center"> Taak afgerond</p>
           </button>
       </div>
   </div>
